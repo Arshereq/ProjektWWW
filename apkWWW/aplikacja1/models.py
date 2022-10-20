@@ -9,7 +9,7 @@ class Druzyna(models.Model):
         ordering=['nazwa']
 
     def __str__(self):
-        return f'{self.nazwa} ({self.kraj})'
+        return f'{self.nazwsasa} ({self.kraj})'
 class Osoba(models.Model):
     name = models.CharField(max_length=60, blank=False)
     surname = models.CharField(max_length=60, blank=False)
