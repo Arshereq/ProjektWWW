@@ -20,4 +20,4 @@ class Osoba(models.Model):
         ('12','Grudzień'),
     )
     miesiac_urodzenia = models.CharField(max_length=60, choices=Miesiace)
-
+    data_dodania = models.DateField(auto_now=True)
