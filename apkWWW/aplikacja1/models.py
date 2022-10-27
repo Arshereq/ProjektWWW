@@ -9,11 +9,8 @@ class Druzyna(models.Model):
         ordering=['nazwa']
 
     def __str__(self):
-        return f'{self.nazwsasa} ({self.kraj})'
-class Osoba(models.Model):
-    name = models.CharField(max_length=60, blank=False)
-    surname = models.CharField(max_length=60, blank=False)
-    class Miesiace(models.IntegerChoices):
+        return f'{self.nazwa} ({self.kraj})'
+class Miesiace(models.IntegerChoices):
         Styczen = 1
         Luty = 2
         Marzec =3
@@ -26,6 +23,10 @@ class Osoba(models.Model):
         Pazdziernik =10
         Listopad =11
         Grudzien = 12
+class Osoba(models.Model):
+    name = models.CharField(max_length=60, blank=False)
+    surname = models.CharField(max_length=60, blank=False)
+
     #NIE DZIALA TA WERSJA
     #miesiac = models.IntegerChoices('miesiac','Styczeń Luty Marzec Maj Czerwiec Lipiec Sierpień Wrzesień Październik Listopad Grudzień')
     #miesiac.choices
