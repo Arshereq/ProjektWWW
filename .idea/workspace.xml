@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec620c10-c904-4c54-bfcb-fb53b18a2e0e" name="Changes" comment="konfiguracja django server">
-      <change afterPath="$PROJECT_DIR$/apkWWW/aplikacja1/Serializer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apkWWW/aplikacja1/docs/drf_serializer_test.md" afterDir="false" />
+    <list default="true" id="ec620c10-c904-4c54-bfcb-fb53b18a2e0e" name="Changes" comment="test połączenia z git">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/projektbn.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projektbn.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apkWWW/aplikacja1/Serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/apkWWW/aplikacja1/Serializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apkWWW/aplikacja1/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/apkWWW/aplikacja1/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apkWWW/aplikacja1/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/apkWWW/aplikacja1/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apkWWW/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/apkWWW/db.sqlite3" afterDir="false" />
     </list>
@@ -16,13 +18,17 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lab3" />
+        <entry key="$PROJECT_DIR$" value="lab4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SET_USER_NAME_GLOBALLY" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -43,7 +49,8 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -65,6 +72,11 @@
       <workItem from="1665908015141" duration="65000" />
       <workItem from="1666271123157" duration="6943000" />
       <workItem from="1666875696269" duration="5210000" />
+      <workItem from="1667493894741" duration="1265000" />
+      <workItem from="1667495182959" duration="4981000" />
+      <workItem from="1667844111090" duration="1409000" />
+      <workItem from="1667846087567" duration="123000" />
+      <workItem from="1667846227373" duration="1762000" />
     </task>
     <task id="LOCAL-00001" summary="project init">
       <created>1665667170921</created>
@@ -108,6 +120,7 @@
     <MESSAGE value="project init" />
     <MESSAGE value="project init-test" />
     <MESSAGE value="konfiguracja django server" />
-    <option name="LAST_COMMIT_MESSAGE" value="konfiguracja django server" />
+    <MESSAGE value="test połączenia z git" />
+    <option name="LAST_COMMIT_MESSAGE" value="test połączenia z git" />
   </component>
 </project>

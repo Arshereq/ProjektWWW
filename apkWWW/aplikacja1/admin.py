@@ -3,7 +3,7 @@ from .models import Osoba
 from .models import Druzyna
 # Register your models here.
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ['name', 'surname', 'Druzyna']
+    list_display = ['Imie', 'Nazwisko', 'Druzyna']
     list_filter = ('Druzyna',)
 
 
