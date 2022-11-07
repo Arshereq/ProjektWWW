@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Druzyna, Osoba, Miesiace
+from apkWWW.Osoba.models import Druzyna, Osoba, Miesiace
 from datetime import date
 
 
@@ -32,15 +32,16 @@ class OsobaSerializer(serializers.Serializer):
         instance.save()
         return instance
 class DruzynaSerializer(serializers.Serializer):
-    id=serializers.IntegerField(read_only=True)
-    nazwa=serializers.CharField(required=True)
-    kraj=serializers.CharField(required=True)
+
+    id = serializers.IntegerField(read_only=True)
+    nazwa = serializers.CharField(required=True)
+    kraj = serializers.CharField(required=True)
 
     def create(self, validated_data):
         return Druzyna.objects.create(**validated_data)
 
     def update(self, instance, validated_data):
-        instance.nazwa = validated_data.get('nazwa',instance.nazwa)
-        instance.kraj = validated_data.get('kraj',instance.kraj)
+        instance.nazwa = validated_data.get('nazwa', instance.nazwa)
+        instance.kraj = validated_data.get('kraj', instance.kraj)
         instance.save()
         return instance
