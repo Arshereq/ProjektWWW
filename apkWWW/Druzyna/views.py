@@ -3,12 +3,11 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Druzyna
-from .Serializer import OsobaSerializer
+from Osoba.Serializer import OsobaSerializer
 
 
 @api_view(['GET'])
 def druzyna_list(request):
-
     if request.method == 'GET':
         team = Druzyna.objects.all()
         serializer = OsobaSerializer(team, many=True)

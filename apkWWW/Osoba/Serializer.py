@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apkWWW.Osoba.models import Druzyna, Osoba, Miesiace
+from .models import Druzyna, Osoba, Miesiace
 from datetime import date
 
 

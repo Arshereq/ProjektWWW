@@ -35,9 +35,12 @@ class Osoba(models.Model):
     miesiac_urodzenia = models.IntegerField(choices=Miesiace.choices)
     data_dodania = models.DateField(auto_now=True)
     Druzyna = models.ForeignKey(Druzyna, on_delete=models.SET_NULL, null=True)
+
     class Meta:
-        ordering=['Nazwisko']
+        ordering = ['Nazwisko']
 
     def __str__(self):
         return (self.Imie+' '+self.Nazwisko)
+
+
 
