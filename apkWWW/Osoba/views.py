@@ -1,44 +1,21 @@
 from django.shortcuts import render
+from rest_framework.views import APIView
+
 from .models import Osoba
 from Osoba.Serializer import OsobaSerializer
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-
-@api_view(['GET', 'POST'])
-def osoba_list(request):
-    if request.method == 'GET':
-        persons = Osoba.objects.all()
-        serializer = OsobaSerializer(persons, many=True)
+class OsobaList(APIView):
+    def get(self, request, format=None):
+        snippets = Osoba.objects.all()
+        serializer = OsobaSerializer(snippets, many=True)
         return Response(serializer.data)
-    if request.method == 'POST':
+
+    def post(self, request, format=None):
         serializer = OsobaSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET', 'PUT', 'DELETE'])
-def osoba_detail(request, pk):
-    try:
-        person = Osoba.objects.get(pk=pk)
-    except Osoba.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'GET':
-        person = Osoba.objects.get(pk=pk)
-        serializer = OsobaSerializer(person)
-        return Response(serializer.data)
-
-    elif request.method == 'PUT':
-        serializer = OsobaSerializer(person, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    elif request.method == 'DELETE':
-        person.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
