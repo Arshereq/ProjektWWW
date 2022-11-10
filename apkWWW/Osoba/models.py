@@ -24,8 +24,8 @@ class Miesiace(models.IntegerChoices):
         Listopad =11
         Grudzien = 12
 class Osoba(models.Model):
-    Imie = models.CharField(max_length=60, blank=False)
-    Nazwisko = models.CharField(max_length=60, blank=False)
+    imie = models.CharField(max_length=60, blank=False)
+    nazwisko = models.CharField(max_length=60, blank=False)
 
     #NIE DZIALA TA WERSJA
     #miesiac = models.IntegerChoices('miesiac','Styczeń Luty Marzec Maj Czerwiec Lipiec Sierpień Wrzesień Październik Listopad Grudzień')
@@ -34,13 +34,13 @@ class Osoba(models.Model):
 
     miesiac_urodzenia = models.IntegerField(choices=Miesiace.choices)
     data_dodania = models.DateField(auto_now=True)
-    Druzyna = models.ForeignKey(Druzyna, on_delete=models.SET_NULL, null=True)
+    druzyna = models.ForeignKey(Druzyna, on_delete=models.SET_NULL, null=True)
 
     class Meta:
-        ordering = ['Nazwisko']
+        ordering = ['nazwisko']
 
     def __str__(self):
-        return (self.Imie+' '+self.Nazwisko)
+        return (self.imie +' ' + self.nazwisko)
 
 
 

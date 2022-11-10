@@ -7,11 +7,11 @@ class OsobaSerializer(serializers.Serializer):
 
     # pole tylko do odczytu, tutaj dla id działa też autoincrement
     id = serializers.IntegerField(read_only=True)
-    Imie = serializers.CharField(required=True)
-    Nazwisko = serializers.CharField(required=True)
+    imie = serializers.CharField(required=True)
+    nazwisko = serializers.CharField(required=True)
     miesiac_urodzenia = serializers.ChoiceField(choices=Miesiace, default=Miesiace)
     data_dodania = serializers.DateField()
-    Druzyna = serializers.PrimaryKeyRelatedField(queryset=Druzyna.objects.all())
+    druzyna = serializers.PrimaryKeyRelatedField(queryset = Druzyna.objects.all())
 
     def validate(self, data):
         if not data['imie'].isalpha():
@@ -26,9 +26,9 @@ class OsobaSerializer(serializers.Serializer):
 
     # przesłonięcie metody update() z klasy serializers.Serializer
     def update(self, instance, validated_data):
-        instance.Imie = validated_data.get('imie', instance.Imie)
-        instance.Nazwisko = validated_data('nazwisko', instance.Nazwisko)
-        instance.Druzyna = validated_data.get('druzyna', instance.Druzyna)
+        instance.imie = validated_data.get('imie', instance.imie)
+        instance.nazwisko = validated_data('nazwisko', instance.nazwisko)
+        instance.druzyna = validated_data.get('druzyna', instance.druzyna)
         instance.save()
         return instance
 class DruzynaSerializer(serializers.Serializer):
