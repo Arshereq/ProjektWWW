@@ -1,17 +1,17 @@
 from rest_framework import serializers
 from .models import Druzyna, Osoba, Miesiace
 from datetime import date
+from django.contrib.auth.models import User
 
 
 class OsobaSerializer(serializers.Serializer):
-
     # pole tylko do odczytu, tutaj dla id działa też autoincrement
     id = serializers.IntegerField(read_only=True)
     imie = serializers.CharField(required=True)
     nazwisko = serializers.CharField(required=True)
     miesiac_urodzenia = serializers.ChoiceField(choices=Miesiace, default=Miesiace)
     data_dodania = serializers.DateField()
-    druzyna = serializers.PrimaryKeyRelatedField(queryset = Druzyna.objects.all())
+    druzyna = serializers.PrimaryKeyRelatedField(queryset=Druzyna.objects.all())
 
     def validate(self, data):
         if not data['imie'].isalpha():
@@ -31,8 +31,9 @@ class OsobaSerializer(serializers.Serializer):
         instance.druzyna = validated_data.get('druzyna', instance.druzyna)
         instance.save()
         return instance
-class DruzynaSerializer(serializers.Serializer):
 
+
+class DruzynaSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
     nazwa = serializers.CharField(required=True)
     kraj = serializers.CharField(required=True)
@@ -45,3 +46,12 @@ class DruzynaSerializer(serializers.Serializer):
         instance.kraj = validated_data.get('kraj', instance.kraj)
         instance.save()
         return instance
+
+
+class UserSerializer(serializers.ModelSerializer):
+    osoba = serializers.PrimaryKeyRelatedField(many=True, queryset=Osoba.objects.all())
+    osoba = serializers.ReadOnlyField(source='wlasciciel.Nazwa')
+
+    class Meta:
+        model = User
+        fields = ['id', 'Nazwa', 'Osoba']
