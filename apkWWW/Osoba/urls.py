@@ -7,6 +7,4 @@ urlpatterns = [
     path('/<int:pk>/', views.osoba_detail),
     path('update/<int:pk>/',views.Osoba_update_delete_add),
     path('delete/<int:pk>/', views.Osoba_update_delete_add),
-    path('users/', views.UserList.as_view()),
-    path('users/<int:pk>/', views.UserDetail.as_view()),
 ]

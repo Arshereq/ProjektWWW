@@ -1,13 +1,11 @@
-import generics as generics
 from django.shortcuts import render
 from .models import Osoba
-from Osoba.Serializer import OsobaSerializer, UserSerializer
-from rest_framework import status, permissions
+from Osoba.Serializer import OsobaSerializer
+from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.response import Response
 from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth.models import User
 
 
 @api_view(['GET'])
@@ -55,21 +53,6 @@ def Osoba_update_delete_add(request, pk):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class UserList(generics.ListAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-    def perform_create(self,serializer):
-        serializer.save(owner=self.request.user)
-
-
-class UserDetail(generics.RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 # @api_view(['GET', 'POST'])
 # def osoba_list(request):
