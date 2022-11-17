@@ -1,4 +1,7 @@
 from django.db import models
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters.html import HtmlFormatter
+from pygments import highlight
 
 # Create your models here.
 # kod z oficjalnej dokumentacji Django
@@ -35,6 +38,8 @@ class Osoba(models.Model):
     miesiac_urodzenia = models.IntegerField(choices=Miesiace.choices)
     data_dodania = models.DateField(auto_now=True)
     druzyna = models.ForeignKey(Druzyna, on_delete=models.SET_NULL, null=True)
+
+    owner = models.ForeignKey('auth.User', null=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['nazwisko']

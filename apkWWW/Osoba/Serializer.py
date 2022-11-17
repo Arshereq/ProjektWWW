@@ -12,6 +12,7 @@ class OsobaSerializer(serializers.Serializer):
     miesiac_urodzenia = serializers.ChoiceField(choices=Miesiace, default=Miesiace)
     data_dodania = serializers.DateField()
     druzyna = serializers.PrimaryKeyRelatedField(queryset = Druzyna.objects.all())
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     def validate(self, data):
         if not data['imie'].isalpha():
@@ -45,3 +46,4 @@ class DruzynaSerializer(serializers.Serializer):
         instance.kraj = validated_data.get('kraj', instance.kraj)
         instance.save()
         return instance
+
