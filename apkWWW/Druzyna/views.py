@@ -4,8 +4,11 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from rest_framework.views import APIView
+from django.http import Http404
+
 from Osoba.models import Druzyna,Osoba
-from Osoba.Serializer import DruzynaSerializer
+from Osoba.Serializer import DruzynaSerializer, OsobaSerializer
 
 
 @api_view(['GET'])
@@ -53,6 +56,14 @@ def Druzyna_update_delete_add(request, pk):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@permission_classes([IsAuthenticated])
+class DruzynaIdOsoba(APIView):
+    def get(self,request,pk,format=None):
+        osoba=Osoba.objects.filter(druzyna_id=pk)
+        serializer = OsobaSerializer(osoba, many=True)
+        return Response(serializer.data)
 
 # @api_view(['GET','POST'])
 # def druzyna_list(request):

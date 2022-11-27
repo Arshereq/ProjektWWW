@@ -8,8 +8,13 @@ from rest_framework.authentication import SessionAuthentication, BasicAuthentica
 from rest_framework.permissions import IsAuthenticated
 from .permission import IsOwnerOrReadOnly
 
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
-@api_view(['GET','POST'])
+
+@api_view(['GET', 'POST'])
 def osoba_list(request):
     if request.method == 'GET':
         osoba = Osoba.objects.all()
@@ -64,6 +69,12 @@ def osoba_delete(request, pk):
     if request.method == 'DELETE':
         osoba.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
 # @api_view(['GET', 'POST'])
 # def osoba_list(request):

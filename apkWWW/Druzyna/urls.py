@@ -7,4 +7,5 @@ urlpatterns = [
     path('/<int:pk>/', views.druzyna_detail),
     path('update/<int:pk>/', views.Druzyna_update_delete_add),
     path('delete/<int:pk>/', views.Druzyna_update_delete_add),
+    path('<int:pk>/czlonkowie', views.druzynaIdOsoba.as_view()),
 ]
